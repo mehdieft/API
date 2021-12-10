@@ -33,7 +33,7 @@ namespace API
             {
                 options.UseSqlite("conection string");
 
-            });
+            });ds
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
