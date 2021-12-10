@@ -1,0 +1,4 @@
+﻿یکم از  لاراول پیچیده تر هستش
+
+comand for update database=>$dotnet ef database update
+
