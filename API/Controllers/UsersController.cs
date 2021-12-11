@@ -5,9 +5,9 @@ using System.Data.Entity;
 
 namespace API.Controllers
 {
-    [ApiController]
     // " and ' are difference use " 
-    [Route("/api/controller")]
+    [Route("api/[controller]")]
+    [ApiController]
     public class UsersController : ControllerBase
 
     {

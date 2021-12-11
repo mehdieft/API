@@ -24,8 +24,9 @@ hello="hello there";
 
 //methods
 getusers(){
-  this.http.get('https://localhost:5001/api/Users').subscribe(response=>{
-    this.users=JSON.parse(JSON.stringify(response));
+  this.http.get('https://localhost:5001/api/users').subscribe(response=>{
+    this.users=response;
+    console.log("users from api",this.users);
   },
   error=>{
     console.log("this is erro happens",error)
