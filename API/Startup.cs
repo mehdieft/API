@@ -13,8 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-
-
+using API.Interfaces;
+using API.Services;
 namespace API
 {
     public class Startup
@@ -34,6 +34,7 @@ namespace API
                 options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
 
             });
+            services.AddScoped<Itoken , TokenService > ();
 
             services.AddControllers();
             services.AddCors();

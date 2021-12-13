@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.Dtos;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Entity;
 using System.Security.Cryptography;
@@ -15,15 +16,17 @@ namespace API.Controllers
     public class AccountController: ControllerBase
     {
     private readonly DataContext _context;
+        private readonly Itoken _tokenService;
 
-        public AccountController(DataContext context)
+        public AccountController(DataContext context,Itoken tokenService)
         {
             _context = context;
+            _tokenService = tokenService;
         }
         //[HttpPost]
         //you have to naming inside this shit
         [HttpPost("register")]
-        public ActionResult<AppUser> Register(RegisterDto registerDto )
+        public ActionResult<UserDto> Register(RegisterDto registerDto )
         {
             //dto is object we create in backend and we exept that request body be like it
             if (UserExist(registerDto.Username)) return BadRequest("username has been token");
@@ -38,7 +41,12 @@ namespace API.Controllers
             };
             _context.Users.Add(user);
             _context.SaveChanges();
-            return user;
+            return new UserDto{
+                username=user.UserName,
+                Token=_tokenService.CreateToken(user)
+
+
+            };
         }
         private bool UserExist(string username)
         {
@@ -48,7 +56,7 @@ namespace API.Controllers
 
 
         [HttpPost("login")]
-        public ActionResult<AppUser> Login(LoginDto loginDto)
+        public ActionResult<UserDto> Login(LoginDto loginDto)
         {
             var user =  _context.Users.SingleOrDefault(x => x.UserName == loginDto.Username);
             if(user== null) return Unauthorized("invalid user name");
@@ -60,7 +68,11 @@ namespace API.Controllers
             {
                 if (computedHash[i] != user.Password[i]) return Unauthorized("invalid password");
             }
-            return user;
+            return new UserDto{
+                username=user.UserName,
+                Token=_tokenService.CreateToken(user)
+
+            };
               
         }
 
