@@ -52,11 +52,12 @@
 
 #signup .inputs {
     margin-top: 25px;
+    font-size:20px;
 }
 
 #signup .inputs label {
     color: #8f8f8f;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 300;
     letter-spacing: 1px;
     margin-bottom: 7px;
@@ -161,6 +162,7 @@ input:-moz-placeholder {
         to(#b9c5dd));
 }</style>
 <div class="container">
+    <h1>this is register Dialog</h1>
 
     <form #loginForm="ngForm" (ngSubmit)="login()" id="signup">
 
@@ -176,9 +178,8 @@ input:-moz-placeholder {
 
         <div class="inputs">
         
-            <input type="email" [(ngModel)]="register.username" placeholder="e-mail" autofocus />
-        
-            <input type="password" [(ngModel)]="register.password" placeholder="Password" />
+            <input  type="email" name="username" [(ngModel)]="model.username" placeholder="e-mail" autofocus />
+            <input  type="password" name="password" [(ngModel)]="model.password" placeholder="Password" />
             
             <div class="checkboxy">
                 <input name="cecky" id="checky" value="1" type="checkbox" /><label class="terms">I accept the terms of use</label>

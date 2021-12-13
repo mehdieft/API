@@ -48,13 +48,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { HeaderComponent } from './frontDeSIGN/header/header.component';
-import {LoginDialog} from './frontDeSIGN/header/header.component';
+import {RegisterDialog} from './frontDeSIGN/header/header.component';
 import { FormsModule } from '@angular/forms';
+import {LoginDialog} from './frontDeSIGN/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    RegisterDialog,
     LoginDialog,
   ],
   imports: [
@@ -110,6 +112,6 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [LoginDialog]
+  entryComponents: [RegisterDialog,LoginDialog]
 })
 export class AppModule { }
