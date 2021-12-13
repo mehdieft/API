@@ -2,13 +2,12 @@
 
 namespace API.Dtos
 {
-    public class RegisterDto
+    public class LoginDto
     {
         [Required]
         public string Username { get; set; }
         [Required]
-       [MinLength(8,ErrorMessage ="min length have to be 8")]
-
-        public string password { get; set; }
+        [MinLength(8,ErrorMessage ="password must be more than 8 ")]
+        public string Password { get; set; }
     }
 }

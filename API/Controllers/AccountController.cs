@@ -2,6 +2,7 @@
 using API.Dtos;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Data.Entity;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -44,6 +45,24 @@ namespace API.Controllers
             return _context.Users.Any(u => u.UserName == username.ToLower());
         }
 
+
+
+        [HttpPost("login")]
+        public ActionResult<AppUser> Login(LoginDto loginDto)
+        {
+            var user =  _context.Users.SingleOrDefault(x => x.UserName == loginDto.Username);
+            if(user== null) return Unauthorized("invalid user name");
+
+
+            using var hmac = new HMACSHA512(user.passwordSalt);
+            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+            for (int i = 0; i < computedHash.Length; i++)
+            {
+                if (computedHash[i] != user.Password[i]) return Unauthorized("invalid password");
+            }
+            return user;
+              
+        }
 
     }
 }
