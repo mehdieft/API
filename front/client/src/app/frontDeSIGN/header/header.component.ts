@@ -1,6 +1,8 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import {AccountServiceService} from '../../services/account-service.service';
+import {User} from '../../interfaces/user';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,8 @@ import {AccountServiceService} from '../../services/account-service.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  IsLogined:false;
+  IsLogined=false;
+  currentUser$:Observable<User>;
 
 
   registerUser(){
@@ -18,15 +21,22 @@ export class HeaderComponent implements OnInit {
    let dg= this.dialog.open(LoginDialog,{width: '95%', minHeight: '20vh', maxWidth: '75vw', closeOnNavigation: true});
    dg.afterClosed().subscribe(resLogin=>{
      console.log("res login",resLogin);
-     this.accountService.login(resLogin).subscribe(res=>{
-      console.log("res----",res);
-    })
+     this.accountService.login(resLogin).subscribe(response=>{
+      console.log("res----",response);
+    },err=>{
+      console.log("error",err)
+    }
+    )
    })
+  }
+  logoutUser(){
+    this.accountService.logout();
   }
 
   constructor(private dialog:MatDialog,private accountService: AccountServiceService) { }
 
   ngOnInit(): void {
+    this.currentUser$=this.accountService.currentUser$;
   }
 
 }
