@@ -18,8 +18,10 @@ export class AccountServiceService {
   login(model:any){
     return this.http.post(this.baseUrl+'/account/login',model).pipe(
       map((response:User) =>{
+        console.log("map and res succesfully");
         const user = response;
         if(user){
+          console.log("if statement succesfuuly")
           localStorage.setItem('user',JSON.stringify(user));
           this.curentUserSource.next(user);
         }
@@ -30,6 +32,8 @@ export class AccountServiceService {
     this.curentUserSource.next(user);
   }
   logout(){
+    localStorage.removeItem('user');
     this.curentUserSource.next(null);
+
   }
 }

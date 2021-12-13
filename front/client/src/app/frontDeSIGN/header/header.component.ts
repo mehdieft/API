@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { Component, OnInit,Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {AccountServiceService} from '../../services/account-service.service';
 
 @Component({
@@ -8,15 +8,23 @@ import {AccountServiceService} from '../../services/account-service.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  IsLogined:false;
+
 
   registerUser(){
     const dialog = this.dialog.open(RegisterDialog,{width: '95%', minHeight: '20vh', maxWidth: '75vw', closeOnNavigation: true});
   }
   loginUser(){
-    this.dialog.open(LoginDialog,{width: '95%', minHeight: '20vh', maxWidth: '75vw', closeOnNavigation: true});
+   let dg= this.dialog.open(LoginDialog,{width: '95%', minHeight: '20vh', maxWidth: '75vw', closeOnNavigation: true});
+   dg.afterClosed().subscribe(resLogin=>{
+     console.log("res login",resLogin);
+     this.accountService.login(resLogin).subscribe(res=>{
+      console.log("res----",res);
+    })
+   })
   }
 
-  constructor(private dialog:MatDialog,) { }
+  constructor(private dialog:MatDialog,private accountService: AccountServiceService) { }
 
   ngOnInit(): void {
   }
@@ -29,7 +37,8 @@ export class HeaderComponent implements OnInit {
 export class RegisterDialog {
   constructor(private accountService: AccountServiceService){}
    model:any={}
-  login(){
+   
+  register(){
     console.log("this is model ",this.model)
         this.accountService.register(this.model).subscribe(res=>{
           console.log("this is resault",res)
@@ -46,5 +55,14 @@ export class RegisterDialog {
       templateUrl: './loginDialog.componenet.html',
     })
     export class LoginDialog {
-      constructor(private accountService: AccountServiceService){}
+     
+      model:any={};
+      constructor(private accountService: AccountServiceService,private dialogRef: MatDialogRef<LoginDialog>,
+        ){}
+      login(){
+        console.log("this is login method",this.model)
+        this.dialogRef.close(this.model)
+       
+
+      }
     }
