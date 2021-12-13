@@ -1,5 +1,6 @@
 ﻿﻿using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Entity;
 
@@ -18,8 +19,10 @@ namespace API.Controllers
             _dataContext = context;
 
         }
+    
 
         [HttpGet]
+        [Authorize]
         public  ActionResult<IEnumerable<AppUser>> GetUsers()
         {
             //async method needs return method of awaits
