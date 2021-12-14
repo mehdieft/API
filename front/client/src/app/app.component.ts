@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { User } from './interfaces/user';
 import {AccountServiceService} from './services/account-service.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,7 +17,7 @@ hello="hello there";
 
 
 //constructor
-  constructor(private http:HttpClient,private accountService:AccountServiceService){}
+  constructor(private http:HttpClient,private accountService:AccountServiceService,private toastr: ToastrService){}
   //ngOniit
    ngOnInit() {
      this.getusers();
@@ -28,6 +28,11 @@ hello="hello there";
      this.accountService.setCurentUser(user);
    }
 
+
+   toaste(){
+     this.toastr.success('success','toaste works!');
+
+   }
 
 //methods
 getusers(){

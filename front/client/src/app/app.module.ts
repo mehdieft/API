@@ -51,15 +51,21 @@ import { HeaderComponent } from './frontDeSIGN/header/header.component';
 import {RegisterDialog} from './frontDeSIGN/header/header.component';
 import { FormsModule } from '@angular/forms';
 import {LoginDialog} from './frontDeSIGN/header/header.component';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
+  
     HeaderComponent,
     RegisterDialog,
     LoginDialog,
+  
   ],
   imports: [
+    CommonModule,
+    ToastrModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpClientModule,
