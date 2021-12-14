@@ -30,6 +30,7 @@ hello="hello there";
 
 
    toaste(){
+     //document for  toaste=>https://www.npmjs.com/package/ngx-toastr
      this.toastr.success('success','toaste works!');
 
    }
