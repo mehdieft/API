@@ -56,6 +56,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {  HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TranslatePickerComponent } from './frontDeSIGN/translate-picker/translate-picker.component';
 
 
 
@@ -71,6 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     RegisterDialog,
     LoginDialog,
+    TranslatePickerComponent,
   
   ],
   imports: [
