@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './interfaces/user';
 import {AccountServiceService} from './services/account-service.service';
 import { ToastrService } from 'ngx-toastr';
+import {TranslateService} from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,13 +12,20 @@ import { ToastrService } from 'ngx-toastr';
 export class AppComponent implements OnInit {
 //data
 users:any;
+lang:'fa';
 title = 'client';
 hello="hello there";
 
 
 
 //constructor
-  constructor(private http:HttpClient,private accountService:AccountServiceService,private toastr: ToastrService){}
+  constructor(private http:HttpClient,
+    private accountService:AccountServiceService,
+    private translate:TranslateService,
+    private toastr: ToastrService){
+      translate.setDefaultLang('fa');
+      translate.use('fa');
+    }
   //ngOniit
    ngOnInit() {
      this.getusers();

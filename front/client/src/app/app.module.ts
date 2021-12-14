@@ -53,6 +53,16 @@ import { FormsModule } from '@angular/forms';
 import {LoginDialog} from './frontDeSIGN/header/header.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {  HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http,'./assets/i18n/','.json');
+}
 
 @NgModule({
   declarations: [
@@ -66,6 +76,13 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     ToastrModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     BrowserModule,
     FormsModule,
     HttpClientModule,
