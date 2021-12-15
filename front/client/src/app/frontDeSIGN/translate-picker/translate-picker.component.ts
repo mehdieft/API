@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-translate-picker',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./translate-picker.component.css']
 })
 export class TranslatePickerComponent implements OnInit {
-
+@Input() translateLanguages:any;
   constructor() { }
 
   ngOnInit(): void {
+    console.log("this is all --->",this.translateLanguages)
+
   }
 
 }

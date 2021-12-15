@@ -1,1 +1,7 @@
 <app-header></app-header>
+<app-carousel></app-carousel>
+<button (click)="translatePickerComponent()" style="position:fixe;" mat-icon-button><mat-icon>settings</mat-icon></button>
+ <app-translate-picker [translateLanguages]="languages" [test]="languages[0]" class="m-3"
+  style="display: inline-block" *ngIf="translatePicker"></app-translate-picker>
+<h1>{{languages}}</h1>
+<h1>gdjsadgsahgksafgdfa</h1>

@@ -15,6 +15,9 @@ users:any;
 lang:'fa';
 title = 'client';
 hello="hello there";
+languages=[{language:"en"},{language:"fa"}];
+translatePicker=false;
+
 
 
 
@@ -30,6 +33,10 @@ hello="hello there";
    ngOnInit() {
      this.getusers();
      this.setCurentUser();
+     console.log("kose nanat",this.languages)
+   }
+   translatePickerComponent(){
+     this.translatePicker=!this.translatePicker;
    }
    setCurentUser(){
      const user:User =JSON.parse(localStorage.getItem('user'));
