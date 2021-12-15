@@ -1,4 +1,5 @@
-<app-header></app-header>
+<app-header style="z-index:2;"></app-header>
+<div style="height:120px;"></div>
 <app-carousel></app-carousel>
 <button (click)="translatePickerComponent()" style="position:fixe;" mat-icon-button><mat-icon>settings</mat-icon></button>
  <app-translate-picker [translateLanguages]="languages" [test]="languages[0]" class="m-3" (selectedTranslate)="setlanguage($event)"
