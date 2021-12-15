@@ -1,2 +1,10 @@
-<p>translate-picker works!</p>
-<div>{{translateLanguages}}</div>
+<button mat-icon-button [matMenuTriggerFor]="translate">
+    <mat-icon>translate</mat-icon>
+    <span>translate</span>
+</button>
+<mat-menu #translate="matMenu">
+    <buton (click)="setTranslate(item)" *ngFor="let item of translateLanguages" mat-menu-item>
+        <span>{{item.language}}</span>
+
+    </buton>
+</mat-menu>

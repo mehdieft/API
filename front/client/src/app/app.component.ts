@@ -20,6 +20,10 @@ translatePicker=false;
 
 
 
+setme(item:any){
+  this.translate.setDefaultLang(item.language);
+this.translate.use(item.language);
+}
 
 //constructor
   constructor(private http:HttpClient,
@@ -44,9 +48,13 @@ translatePicker=false;
    }
 
 
-   toaste(){
-     //document for  toaste=>https://www.npmjs.com/package/ngx-toastr
-     this.toastr.success('success','toaste works!');
+   
+   setlanguage($event){
+     console.log("im from parnet emiting",$event);
+     this.setme($event);
+     this.translatePicker=false;
+    //  this.toastr.success(this.translate.instant('success',{value:${success}}));
+     this.toastr.success(this.translate.instant('success', {value: 'success'}),this.translate.instant('successfully', {value: 'successfully'}));
 
    }
 
