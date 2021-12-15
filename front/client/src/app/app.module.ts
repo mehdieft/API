@@ -57,6 +57,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {  HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslatePickerComponent } from './frontDeSIGN/translate-picker/translate-picker.component';
+import { CarouselComponent } from './frontDeSIGN/carousel/carousel.component';
 
 
 
@@ -73,6 +74,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterDialog,
     LoginDialog,
     TranslatePickerComponent,
+    CarouselComponent,
   
   ],
   imports: [
