@@ -63,6 +63,7 @@ import { ListComponent } from './mainComponents/list/list.component';
 import { MemeberListComponent } from './mainComponents/memeber-list/memeber-list.component';
 import { MemeberDatailComponent } from './mainComponents/memeber-datail/memeber-datail.component';
 import { MassagesComponent } from './mainComponents/massages/massages.component';
+import { HomepageComponent } from './frontDeSIGN/homepage/homepage.component';
 
 
 
@@ -83,6 +84,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MemeberListComponent,
     MemeberDatailComponent,
     MassagesComponent,
+    HomepageComponent,
   
   ],
   imports: [

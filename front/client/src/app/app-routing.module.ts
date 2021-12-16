@@ -5,10 +5,11 @@ import { MemeberDatailComponent } from './mainComponents/memeber-datail/memeber-
 import { MemeberListComponent } from './mainComponents/memeber-list/memeber-list.component';
 import {ListComponent } from './mainComponents/list/list.component'
 import { MassagesComponent } from './mainComponents/massages/massages.component';
+import {HomepageComponent} from './frontDeSIGN/homepage/homepage.component'
 
 
 const routes: Routes = [
-  {path:'', component: AppComponent},
+  {path:'', component: HomepageComponent},
   {path:'members',component: MemeberListComponent},
   {path:'members/:id',component:MemeberDatailComponent},
   {path:'lists',component:ListComponent},

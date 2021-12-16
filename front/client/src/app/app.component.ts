@@ -11,6 +11,14 @@ import { GlobalService } from './global.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  constructor(private http:HttpClient,
+    private accountService:AccountServiceService,
+    private translate:TranslateService,
+    private global:GlobalService,
+    private toastr: ToastrService){
+      translate.setDefaultLang('fa');
+      translate.use('fa');
+    }
 //data
 users:any;
 lang:'fa';
@@ -27,18 +35,9 @@ this.translate.use(item.language);
 }
 
 //constructor
-  constructor(private http:HttpClient,
-    private accountService:AccountServiceService,
-    private translate:TranslateService,
-    private global:GlobalService,
-    private toastr: ToastrService){
-      translate.setDefaultLang('fa');
-      translate.use('fa');
-    }
   //ngOniit
    ngOnInit() {
     
-     this.getusers();
      this.setCurentUser();
      console.log("kose nanat",this.languages)
    }
@@ -70,7 +69,6 @@ getusers(){
     console.log("users from api",this.users);
   },
   error=>{
-    console.log("this is erro happens",error)
   })
 
 }
