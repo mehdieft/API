@@ -6,14 +6,15 @@ import { MemeberListComponent } from './mainComponents/memeber-list/memeber-list
 import {ListComponent } from './mainComponents/list/list.component'
 import { MassagesComponent } from './mainComponents/massages/massages.component';
 import {HomepageComponent} from './frontDeSIGN/homepage/homepage.component'
+import { AuthGuard } from './Guard/auth.guard';
 
 
 const routes: Routes = [
   {path:'', component: HomepageComponent},
-  {path:'members',component: MemeberListComponent},
+  {path:'members',component: MemeberListComponent,canActivate:[AuthGuard]},
   {path:'members/:id',component:MemeberDatailComponent},
-  {path:'lists',component:ListComponent},
-  {path:'massages',component:MassagesComponent},
+  {path:'lists',component:ListComponent,canActivate:[AuthGuard]},
+  {path:'massages',component:MassagesComponent,canActivate:[AuthGuard]},
 ];
 
 @NgModule({
