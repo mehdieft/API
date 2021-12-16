@@ -64,6 +64,8 @@ import { MemeberListComponent } from './mainComponents/memeber-list/memeber-list
 import { MemeberDatailComponent } from './mainComponents/memeber-datail/memeber-datail.component';
 import { MassagesComponent } from './mainComponents/massages/massages.component';
 import { HomepageComponent } from './frontDeSIGN/homepage/homepage.component';
+import { AboutComponent } from './frontDeSIGN/about/about.component';
+import { FooterComponent } from './frontDeSIGN/footer/footer.component';
 
 
 
@@ -85,6 +87,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MemeberDatailComponent,
     MassagesComponent,
     HomepageComponent,
+    AboutComponent,
+    FooterComponent,
   
   ],
   imports: [
