@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class CarouselComponent implements OnInit {
 
   images=[
-    {path:"https://designmodo.com/wp-content/uploads/2015/06/2-Personal-portfolio-of-Tomek-Michalski.jpg"},
-    {path:"https://designmodo.com/wp-content/uploads/2015/06/2-Personal-portfolio-of-Tomek-Michalski.jpg"},
-    {path:"https://designmodo.com/wp-content/uploads/2015/06/2-Personal-portfolio-of-Tomek-Michalski.jpg"},
+ 
+    {path:"assets/images/homepage1.jpg"},
+    {path:"assets/images/homepage2.jpg"},
 
   ]
   constructor() { }
