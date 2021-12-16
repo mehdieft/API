@@ -1,8 +1,8 @@
 
 <div style="height:120px;"></div>
 <app-carousel></app-carousel>
-<button (click)="translatePickerComponent()" mat-icon-button><mat-icon>settings</mat-icon></button>
-<app-translate-picker [translateLanguages]="languages" [test]="languages[0]" class="m-3" (selectedTranslate)="setlanguage($event)"
+<button (click)="translatePickerComponent()" style="position:fixed;top:47%;z-index: 10;color:white" mat-icon-button><mat-icon>settings</mat-icon></button>
+<app-translate-picker [translateLanguages]="languages" style="position:fixed;top:49%;z-index: 100;" [test]="languages[0]" class="m-3" (selectedTranslate)="setlanguage($event)"
 *ngIf="translatePicker"></app-translate-picker>
 <h2>
   {{'imworking'|translate}}

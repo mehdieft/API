@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {AccountServiceService} from '../../services/account-service.service';
 import {User} from '../../interfaces/user';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit {
       console.log("this is register response",registerResponse)
       this.accountService.register(registerResponse).subscribe(res=>{
         this.toastr.success("register",'register successfully');
+        this.router.navigateByUrl('/members');
 
       
       },(err=>{
@@ -39,6 +41,8 @@ export class HeaderComponent implements OnInit {
      console.log("res login",resLogin);
      this.accountService.login(resLogin).subscribe(response=>{
        this.toastr.success('success','your register succesfully');
+       this.router.navigateByUrl('/members');
+
       console.log("res----",response);
 
     },err=>{
@@ -51,12 +55,14 @@ export class HeaderComponent implements OnInit {
   logoutUser(){
     this.toastr.success('success','your logout successfully')
     this.accountService.logout();
+    this.router.navigateByUrl('/');
   }
 
   constructor(private dialog:MatDialog,
     private accountService: AccountServiceService,
     private toastr: ToastrService,
-    ) { }
+    private router: Router) {}
+    
 
   ngOnInit(): void {
     this.currentUser$=this.accountService.currentUser$;

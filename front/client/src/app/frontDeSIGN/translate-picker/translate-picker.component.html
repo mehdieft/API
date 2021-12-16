@@ -1,6 +1,6 @@
 <button mat-icon-button [matMenuTriggerFor]="translate">
-    <mat-icon>translate</mat-icon>
-    <span>translate</span>
+    <mat-icon style="color:white;">translate</mat-icon>
+    <span style="color:white;">translate</span>
 </button>
 <mat-menu #translate="matMenu">
     <buton (click)="setTranslate(item)" *ngFor="let item of translateLanguages" mat-menu-item>
