@@ -59,6 +59,10 @@ import {  HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslatePickerComponent } from './frontDeSIGN/translate-picker/translate-picker.component';
 import { CarouselComponent } from './frontDeSIGN/carousel/carousel.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { ListComponent } from './mainComponents/list/list.component';
+import { MemeberListComponent } from './mainComponents/memeber-list/memeber-list.component';
+import { MemeberDatailComponent } from './mainComponents/memeber-datail/memeber-datail.component';
+import { MassagesComponent } from './mainComponents/massages/massages.component';
 
 
 
@@ -75,6 +79,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginDialog,
     TranslatePickerComponent,
     CarouselComponent,
+    ListComponent,
+    MemeberListComponent,
+    MemeberDatailComponent,
+    MassagesComponent,
   
   ],
   imports: [

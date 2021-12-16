@@ -4,6 +4,7 @@ import { User } from './interfaces/user';
 import {AccountServiceService} from './services/account-service.service';
 import { ToastrService } from 'ngx-toastr';
 import {TranslateService} from '@ngx-translate/core';
+import { GlobalService } from './global.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -29,12 +30,14 @@ this.translate.use(item.language);
   constructor(private http:HttpClient,
     private accountService:AccountServiceService,
     private translate:TranslateService,
+    private global:GlobalService,
     private toastr: ToastrService){
       translate.setDefaultLang('fa');
       translate.use('fa');
     }
   //ngOniit
    ngOnInit() {
+    
      this.getusers();
      this.setCurentUser();
      console.log("kose nanat",this.languages)
@@ -51,8 +54,10 @@ this.translate.use(item.language);
    
    setlanguage($event){
      console.log("im from parnet emiting",$event);
+     this.toastr.error(this.global.translatefunc('fuckYOU'),this.global.translatefunc('fuckYOU'))
      this.setme($event);
      this.translatePicker=false;
+     this.toastr.success(this.translate.instant('plz', {value: 'plz'}),this.translate.instant('plz', {value: 'plz'}))
     //  this.toastr.success(this.translate.instant('success',{value:${success}}));
      this.toastr.success(this.translate.instant('success', {value: 'success'}),this.translate.instant('successfully', {value: 'successfully'}));
 
